@@ -10,9 +10,17 @@
   </head>
 
   <body>
-   <%= link_to 'Log out', logout_path method: :delete%>
-   
-
+   <nav class="navbar">
+    <%= link_to 'Log out', logout_path, method: :delete, class: 'navlink' %>
+    <%= link_to 'All Meet ups', goals_path, class: 'navlink' %>
+    <%= link_to 'New Meet up', new_goal_path, class: 'navlink' %>
+    </nav>
+    
+     <%= link_to "Login Here", login_path, class: 'navlink' %>
+     <%= link_to 'Log out', logout_path, method: :delete, class: 'navlink' %>
+    
+    
+    <div class="container">
     <%= yield %>
   </body>
 </html>
