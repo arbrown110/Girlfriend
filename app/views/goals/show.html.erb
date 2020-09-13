@@ -1,0 +1,7 @@
+<h1>Created Meet up Review</h1>
+
+
+<% if @goal.user == current_user %>
+  <%= link_to "Edit Meet up", edit_goal_path(@goal) %>
+  <%= link_to "Delete Meet up", goal_path(@goal), method: :delete  %>
+<% end %>
