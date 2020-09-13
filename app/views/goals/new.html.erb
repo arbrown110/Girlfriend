@@ -1,2 +1,40 @@
 <h1>Create Meet up</h1>
 
+<%= form_for @goal do |u| %>
+
+<%= u.label :title %>
+<%= u.text_field :title %>
+<br>
+<br>
+<%= u.label :theme %>
+<%= u.text_field :theme %>
+<br>
+<br>
+<%= u.label :group %>
+<%= u.number_field :group, min:2 %>
+<br>
+<br>
+<%= u.label :location_id, "Select location" %>
+<%= u.collection_select :location_id, Location.all, :id, :city, prompt: true %>
+<br>
+<br>
+<% if !params[:location_id] %>
+
+<h4> or  add a new Location: </h4>
+
+ <% u.fields_for :location do |l| %>
+  <%= l.label :city %>
+  <%= l.text_field :city %>
+  
+  <%= l.label :state %>
+  <%= l.text_field :state %>
+  
+  <%= l.label :date %>
+  <%= l.date_field :date%>
+ <% end %>
+<% end %>
+<br>
+<br>
+<%= u.submit 'Submit' %>
+
+<% end %>

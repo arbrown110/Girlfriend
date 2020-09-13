@@ -1,1 +1,21 @@
 <h1>All Meet-ups !!</h1>
+
+<%= form_for @goal.new do |u| %>
+
+<%= u.label :title %>
+<%= u.text_field :title %>
+<br>
+<br>
+<%= u.label :theme %>
+<%= u.text_field :theme %>
+<br>
+<br>
+<%= u.label :group %>
+<%= u.number_field :group, min:2 %>
+<br>
+<br>
+<%= u.label :location_id %>
+<%= u.text_field :location_id, Location.all, :id, :city, prompt: true %>
+
+<% end %>
+

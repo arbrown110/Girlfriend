@@ -3,20 +3,20 @@ class GoalsController < ApplicationController
  #before_action :check_for_logged_in, except: [:index]
 
  def new
-    @goal = Goal.new
+   @goal = Goal.new
  end
 
  def create
-  @goal = current_user.goals.build(goal_params)
+  @goal = current_user.goal.build(goal_params)
   if @goal.save
-   redirect_to goal_path(@goal)
+   redirect_to goals_path(@goal)
   else
    render :new
   end
  end
 
  def index
-  
+  @goal = Goal.all
  end
 
  def show
@@ -48,6 +48,6 @@ class GoalsController < ApplicationController
 
 
  def goal_params
-  params.require(:goal).permit(:title, :location, :theme, :group)
+  params.require(:goal).permit(:title, :location_id, :theme, :group)
  end
 end
